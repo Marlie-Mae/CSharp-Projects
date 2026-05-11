@@ -1,0 +1,14 @@
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\bin\Debug\net8.0\Final.exe
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\bin\Debug\net8.0\Final.deps.json
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\bin\Debug\net8.0\Final.runtimeconfig.json
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\bin\Debug\net8.0\Final.dll
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\bin\Debug\net8.0\Final.pdb
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\Final.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\Final.AssemblyInfoInputs.cache
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\Final.AssemblyInfo.cs
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\Final.csproj.CoreCompileInputs.cache
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\Final.dll
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\refint\Final.dll
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\Final.pdb
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\Final.genruntimeconfig.cache
+c:\Users\Phil\New folder\Downloads\Challenge-project-debugging-CSharp-main\ChallengeProject\Final\obj\Debug\net8.0\ref\Final.dll

@@ -475,11 +475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Phil\\source\\repos\\C#Form_Exercise1\\WinFormsApp1\\WinFormsApp1.csproj",
+      "projectUniqueName": "C:\\Users\\Phil\\source\\repos\\StudentProfileForm\\WinFormsApp1\\WinFormsApp1.csproj",
       "projectName": "WinFormsApp1",
-      "projectPath": "C:\\Users\\Phil\\source\\repos\\C#Form_Exercise1\\WinFormsApp1\\WinFormsApp1.csproj",
+      "projectPath": "C:\\Users\\Phil\\source\\repos\\StudentProfileForm\\WinFormsApp1\\WinFormsApp1.csproj",
       "packagesPath": "C:\\Users\\Phil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Phil\\source\\repos\\C#Form_Exercise1\\WinFormsApp1\\obj\\",
+      "outputPath": "C:\\Users\\Phil\\source\\repos\\StudentProfileForm\\WinFormsApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Phil\\AppData\\Roaming\\NuGet\\NuGet.Config",

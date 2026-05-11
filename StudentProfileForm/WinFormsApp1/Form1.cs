@@ -20,12 +20,10 @@ namespace WinFormsApp1
             comboBox1.Items.Add("Other");
 
             textBox4.Text = "Auto-generated ID"; 
-            textBox4.ForeColor = SystemColors.GrayText; // Placeholder color
+            textBox4.ForeColor = SystemColors.GrayText; 
 
-            // Subscribe to the TextChanged event for search functionality
             textBox5.TextChanged += TextBox5_TextChanged;
 
-            // Handle the focus event to clear the placeholder
             textBox4.GotFocus += TextBox4_GotFocus;
             textBox4.LostFocus += TextBox4_LostFocus;
         }
@@ -35,7 +33,7 @@ namespace WinFormsApp1
             if (textBox4.Text == "Auto-generated ID")
             {
                 textBox4.Text = "";
-                textBox4.ForeColor = SystemColors.WindowText; // Default text color
+                textBox4.ForeColor = SystemColors.WindowText; 
             }
         }
 
@@ -147,7 +145,7 @@ namespace WinFormsApp1
                 {
                     con.Close();
                 }
-            } 
+            }
         }
 
         private void button3_Click(object sender, EventArgs e) // Update button

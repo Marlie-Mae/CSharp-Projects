@@ -12,7 +12,7 @@ CREATE TABLE History (
     Transaction_Date DATETIME NOT NULL,
     Transaction_Type VARCHAR(3) NOT NULL CHECK (Transaction_Type IN ('In', 'Out')),
     Quantity INT NOT NULL,  
-    Unit VARCHAR(20) NOT NULL CHECK (Unit IN ('pcs', 'kg', 'ltr', 'box', 'dozen', 'gram', 'meter', 'pack')), -- Add Unit here
+    Unit VARCHAR(20) NOT NULL CHECK (Unit IN ('pcs', 'kg', 'ltr', 'box', 'dozen', 'gram', 'meter', 'pack')), 
     Supplier VARCHAR(30) NOT NULL,
     Customer VARCHAR(30) NOT NULL,
     FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID)
@@ -30,15 +30,12 @@ SELECT * FROM Products;
 SELECT * FROM History;
 
 
--- Step 1: Delete all records from the History table
 DELETE FROM History;
 
--- Step 2: Reset the History_ID identity seed to start from 1
 DBCC CHECKIDENT ('History', RESEED, 0);
 
--- Step 3: Delete all records from the Products table
 DELETE FROM Products;
 
-
 SELECT * FROM History;
+
 SELECT * FROM Products;

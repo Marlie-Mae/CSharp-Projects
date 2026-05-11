@@ -101,7 +101,6 @@ namespace ProductForm
 
                 try
                 {
-                    // Insert into History table
                     string insertQuery = @"INSERT INTO History (Product_ID, Transaction_Date, Transaction_Type, Quantity, Unit, Supplier, Customer) 
                                            VALUES (@ProductID, @TransactionDate, 'Out', @Quantity, @Unit, '', @Customer)";
                     using (SqlCommand command = new SqlCommand(insertQuery, connection, transaction))
@@ -114,7 +113,6 @@ namespace ProductForm
                         command.ExecuteNonQuery();
                     }
 
-                    // Update Quantity in Products table (deducting stock)
                     string updateProductQuery = @"UPDATE Products SET Quantity = Quantity - @Quantity WHERE Product_ID = @ProductID AND Quantity >= @Quantity";
                     using (SqlCommand updateCommand = new SqlCommand(updateProductQuery, connection, transaction))
                     {

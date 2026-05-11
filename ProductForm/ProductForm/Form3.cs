@@ -7,14 +7,14 @@ namespace ProductForm
 {
     public partial class Form3 : Form
     {
-        private DataTable productsTable; // To hold the product records
-        private int currentIndex = -1; // To track the current index in the product list
+        private DataTable productsTable; 
+        private int currentIndex = -1;
 
         public Form3()
         {
             InitializeComponent();
-            LoadProducts(); // Load products on form initialization
-            InitializeUnitComboBox(); // Populate the combo box for units
+            LoadProducts(); 
+            InitializeUnitComboBox(); 
         }
 
         private void LoadProducts()
@@ -23,7 +23,6 @@ namespace ProductForm
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // Updated query to join Products with History table
                 string query = @"
                     SELECT p.Product_ID, p.Product_Name, p.Quantity, p.Unit
                     FROM Products p";
@@ -36,8 +35,8 @@ namespace ProductForm
 
             if (productsTable.Rows.Count > 0)
             {
-                currentIndex = 0; // Start at the first product
-                LoadProductDetails(); // Load the first product details into the text boxes
+                currentIndex = 0;
+                LoadProductDetails();
             }
             else
             {
@@ -47,7 +46,6 @@ namespace ProductForm
 
         private void InitializeUnitComboBox()
         {
-            // Add possible units to the combo box
             comboUnit.Items.AddRange(new string[] { "pcs", "kg", "ltr", "box", "dozen", "gram", "meter", "pack" });
         }
 
@@ -59,27 +57,24 @@ namespace ProductForm
                 txtpid.Text = row["Product_ID"].ToString();
                 txtpname.Text = row["Product_Name"].ToString();
 
-                // Load Quantity
                 if (row["Quantity"] != DBNull.Value)
                 {
                     quantity.Value = Convert.ToInt32(row["Quantity"]);
                 }
                 else
                 {
-                    quantity.Value = 0; // Default value
+                    quantity.Value = 0;
                 }
 
-                // Load Unit
                 if (row["Unit"] != DBNull.Value)
                 {
                     comboUnit.SelectedItem = row["Unit"].ToString();
                 }
                 else
                 {
-                    comboUnit.SelectedIndex = -1; // Reset
+                    comboUnit.SelectedIndex = -1; 
                 }
 
-                // Load Supplier from History
                 LoadSupplierForProduct(row["Product_ID"].ToString());
             }
         }
@@ -91,7 +86,7 @@ namespace ProductForm
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT TOP 1 Supplier FROM History WHERE Product_ID = @ProductID ORDER BY Transaction_Date DESC"; // Get the most recent supplier
+                string query = "SELECT TOP 1 Supplier FROM History WHERE Product_ID = @ProductID ORDER BY Transaction_Date DESC"; 
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -104,7 +99,7 @@ namespace ProductForm
                     }
                     else
                     {
-                        txtsupplier.Clear(); // Clear if no supplier found
+                        txtsupplier.Clear();
                     }
                 }
             }
@@ -115,7 +110,7 @@ namespace ProductForm
             if (currentIndex < productsTable.Rows.Count - 1)
             {
                 currentIndex++;
-                LoadProductDetails(); // Load the next product details
+                LoadProductDetails();
             }
             else
             {
@@ -128,7 +123,7 @@ namespace ProductForm
             if (currentIndex > 0)
             {
                 currentIndex--;
-                LoadProductDetails(); // Load the previous product details
+                LoadProductDetails(); 
             }
             else
             {
@@ -140,13 +135,12 @@ namespace ProductForm
         {
             string connectionString = @"Data Source=DESKTOP-TI7OG5Q\SQLEXPRESS;Initial Catalog=ProductDB;Integrated Security=True;TrustServerCertificate=True;";
 
-            // Get values from the form
             string productId = txtpid.Text;
             string supplier = txtsupplier.Text;
-            string customer = " "; // Empty for Stock IN
+            string customer = " "; 
             int quantityAdded = (int)quantity.Value;
             DateTime transactionDate = dateTimePicker1.Value;
-            string unit = comboUnit.SelectedItem?.ToString(); // Selected unit
+            string unit = comboUnit.SelectedItem?.ToString();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -155,7 +149,6 @@ namespace ProductForm
 
                 try
                 {
-                    // 1. Insert transaction into History table
                     string insertQuery = @"INSERT INTO History (Product_ID, Transaction_Date, Transaction_Type, Quantity, Unit, Supplier, Customer) 
                                    VALUES (@ProductID, @TransactionDate, 'In', @Quantity, @Unit, @Supplier, @Customer)";
                     using (SqlCommand command = new SqlCommand(insertQuery, connection, transaction))
@@ -169,7 +162,6 @@ namespace ProductForm
                         command.ExecuteNonQuery();
                     }
 
-                    // 2. Update Quantity and Unit in Products table
                     string updateProductQuery = @"UPDATE Products 
                                           SET Quantity = COALESCE(Quantity, 0) + @Quantity, Unit = @Unit 
                                           WHERE Product_ID = @ProductID";
@@ -194,36 +186,32 @@ namespace ProductForm
 
         private void btnclear_Click(object sender, EventArgs e)
         {
-            // Clear text boxes and reset fields
             txtpid.Clear();
             txtpname.Clear();
             quantity.Value = 0;
-            comboUnit.SelectedIndex = -1; // Reset the combo box selection
+            comboUnit.SelectedIndex = -1; 
             txtsupplier.Clear();
         }
 
         private void btnprod_Click(object sender, EventArgs e)
         {
-            // Navigate to Form1
             Form1 form1 = new Form1();
             form1.Show();
-            this.Hide(); // Hide the current form
+            this.Hide();
         }
 
         private void btnavail_Click(object sender, EventArgs e)
         {
-            // Navigate to Form2 (Available Products)
             Form2 form2 = new Form2();
             form2.Show();
-            this.Hide(); // Hide the current form
+            this.Hide(); 
         }
 
         private void btnhistory_Click(object sender, EventArgs e)
         {
-            // Navigate to Form5 (History)
             Form5 form5 = new Form5();
             form5.Show();
-            this.Hide(); // Hide the current form
+            this.Hide(); 
         }
 
         private void quantity_ValueChanged(object sender, EventArgs e)

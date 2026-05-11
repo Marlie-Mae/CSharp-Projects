@@ -7,12 +7,12 @@ namespace ProductForm
 {
     public partial class Form5 : Form
     {
-        private DataTable combinedTable; // To hold the combined data for display
+        private DataTable combinedTable; 
 
         public Form5()
         {
             InitializeComponent();
-            LoadHistoryData(); // Load the history data on form initialization
+            LoadHistoryData(); 
         }
 
         private void LoadHistoryData()
@@ -45,10 +45,8 @@ namespace ProductForm
                 }
             }
 
-            // Bind the combined data to the DataGridView
             dataGridView1.DataSource = combinedTable;
 
-            // Optionally set column headers or format the DataGridView
             dataGridView1.Columns["History_ID"].HeaderText = "History ID";
             dataGridView1.Columns["Product_ID"].HeaderText = "Product ID";
             dataGridView1.Columns["Product_Name"].HeaderText = "Product Name";
@@ -62,12 +60,10 @@ namespace ProductForm
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
         {
-            // Check if combinedTable has data to filter
             if (combinedTable != null)
             {
                 string filterText = txtsearch.Text.Trim();
 
-                // Set up filter across multiple columns (Product_ID, Product_Name, Supplier, Customer, Transaction_Type, Transaction_Date, Quantity, Unit)
                 string filterExpression = $"Product_ID LIKE '%{filterText}%' " +
                                           $"OR Product_Name LIKE '%{filterText}%' " +
                                           $"OR Supplier LIKE '%{filterText}%' " +
@@ -76,13 +72,11 @@ namespace ProductForm
                                           $"OR CONVERT(Transaction_Date, 'System.String') LIKE '%{filterText}%' " +
                                           $"OR Unit LIKE '%{filterText}%'";
 
-                // If filterText can be parsed as an integer, add Quantity filter
                 if (int.TryParse(filterText, out int numericFilter))
                 {
                     filterExpression += $" OR Quantity = {numericFilter}";
                 }
 
-                // Apply filter to the DataView
                 DataView dv = combinedTable.DefaultView;
                 dv.RowFilter = filterExpression;
             }
@@ -121,7 +115,7 @@ namespace ProductForm
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Optional: Handle cell clicks if you need specific functionality
+        
         }
 
         private void btnexit1_Click(object sender, EventArgs e)
